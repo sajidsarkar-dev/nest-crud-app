@@ -1,4 +1,7 @@
 import { Injectable } from '@nestjs/common';
+import { PaymentService } from '../payment/payment.service';
+import { ProductsService } from '../products/products.service';
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class OrdersService {
@@ -7,7 +10,11 @@ export class OrdersService {
     { id: 2, item: 'Item B' }
   ];
 
-  constructor() { }
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly productsService: ProductsService,
+    private readonly paymentService: PaymentService,
+  ) { }
 
   getAllOrders(): any[] {
     return this.ordersList;
