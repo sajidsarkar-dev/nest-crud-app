@@ -1,7 +1,9 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
+import { ApiKeyGuard } from '../common/guards/api-key.guard';
 
 @Controller('users')
+@UseGuards(ApiKeyGuard)
 export class UsersController {
 
   constructor(

@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { OrdersService } from '../../../orders/orders.service';
-import { UsersService } from '../../../users/users.service';
+import { OrdersService } from '../orders.service';
+import { UsersService } from '../../users/users.service';
 
 @Injectable()
 export class UserOrdersService {
   private userOrders = [
-    { userId: 1, orders: [{ id: 1, item: 'Item A' }] },
-    { userId: 2, orders: [{ id: 2, item: 'Item B' }] }
+    { userId: 1, orders: [{ id: 1, item: 'Item A', amount: 100, paymentStatus: undefined }] },
+    { userId: 2, orders: [{ id: 2, item: 'Item B', amount: 200, paymentStatus: undefined }] }
   ];
 
   constructor(

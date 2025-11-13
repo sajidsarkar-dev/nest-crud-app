@@ -4,6 +4,7 @@ import { Injectable } from '@nestjs/common';
 export class PaymentService {
 
   chargePayment(amount: number): any {
+    console.log(`💰 Charging ₹${amount}...`);
     return { status: 'success', transactionId: Date.now() };
   }
 }

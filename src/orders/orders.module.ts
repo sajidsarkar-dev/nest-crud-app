@@ -4,15 +4,25 @@ import { OrdersService } from './orders.service';
 import { UsersModule } from '../users/users.module';
 import { ProductsModule } from '../products/products.module';
 import { PaymentModule } from '../payment/payment.module';
+import { UserOrdersController } from './user-orders/user-orders.controller';
+import { UserOrdersService } from './user-orders/user-orders.service';
 
+const CURRENCY = { code: 'INR', symbol: '₹' };
 @Module({
   imports: [
-    forwardRef(() => UsersModule),
+    UsersModule,
     ProductsModule,
     PaymentModule
   ],
-  controllers: [OrdersController],
-  providers: [OrdersService],
+  controllers: [
+    OrdersController,
+    UserOrdersController
+  ],
+  providers: [
+    {provide: 'CURRENCY', useValue: CURRENCY},
+    OrdersService, 
+    UserOrdersService    
+  ],
   exports: [OrdersService]
 })
 export class OrdersModule {}
